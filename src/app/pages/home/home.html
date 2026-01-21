@@ -1,0 +1,127 @@
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-[#08004B] opacity-90 z-0"></div>
+  <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#2546E0] rounded-full blur-[150px] opacity-20"></div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center" data-aos="zoom-out">
+    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+      نحن نطور <span class="text-gradient">منتجات جميلة</span>.<br>دعنا نطور لك.
+    </h1>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+      كود لينك شركة متخصصة في تطوير الحلول التقنية المبتكرة، نساعد التنفيذيين أصحاب الرؤية على تحويل مشاريعهم لتزدهر في العصر الرقمي.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="bg-[#2546E0] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_20px_#2546E0] transition-all duration-300">ابدأ الآن</button>
+      <button class="border border-white/20 hover:bg-white/10 px-10 py-4 rounded-full font-bold text-lg transition-all">شاهد خدمتنا</button>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-[#050035]">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-left">
+        <h2 class="text-4xl font-bold mb-6">أنت تشارك فكرتك. <span class="text-[#2546E0]">نحن ننجزها.</span></h2>
+        <p class="text-gray-400 text-lg leading-relaxed">
+          نقوم بتحويل الأفكار التجارية الجريئة إلى منتجات رقمية استثنائية. هل تبحث عن شريك يجعل عملية تطوير البرمجيات بين يديك؟ لقد جئت إلى المكان المناسب.
+        </p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-3xl border border-white/10" data-aos="fade-right">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <code class="text-blue-300">// CodeLink Strategy <br>
+          const project = "Your Idea"; <br>
+          const success = developWithPassion(project);
+        </code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl font-bold mb-4">خدماتنا  </h2>
+      <div class="w-20 h-1 bg-[#2546E0] mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (service of services; track $index) {
+        <div class="p-8 rounded-2xl bg-[#0b0064] border border-white/5 hover:border-[#2546E0] transition-all duration-300 group" data-aos="fade-up" [attr.data-aos-delay]="$index * 100">
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-[#2546E0]">{{service.title}}</h3>
+          <p class="text-gray-400 leading-relaxed">{{service.desc}}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white/5 overflow-hidden">
+  <div class="container mx-auto px-6 mb-12 text-center">
+    <h3 class="text-2xl font-bold text-gray-400">التقنيات المختارة بعناية لدعم أفكار الأعمال الأكثر جرأة</h3>
+  </div>
+  <div class="flex space-x-12 animate-marquee whitespace-nowrap">
+    @for (tech of technologies; track tech) {
+      <span class="text-6xl font-black text-white/10 hover:text-[#2546E0] transition-colors mx-8">{{tech}}</span>
+    }
+    @for (tech of technologies; track tech) {
+        <span class="text-6xl font-black text-white/10 hover:text-[#2546E0] transition-colors mx-8">{{tech}}</span>
+    }
+  </div>
+</section>
+
+<section class="py-24 bg-white relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2546E0]/20 to-transparent"></div>
+
+  <div class="container mx-auto px-6 text-center">
+    <div class="mb-16" data-aos="fade-up">
+      <h2 class="text-4xl font-black text-[#08004B] mb-4">شركاء النجاح</h2>
+      <p class="text-gray-500 font-medium">الكيانات التي وضعنا بصمتنا التقنية معها</p>
+      <div class="w-24 h-1.5 bg-[#2546E0] mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
+      <div class="group relative overflow-hidden rounded-3xl bg-gray-50 p-8 md:p-12 shadow-[0_20px_50px_rgba(8,0,75,0.05)] border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(37,70,224,0.15)]">
+
+        <img
+          src="assets/images/partners.jpeg"
+          alt="شركاء كود لينك"
+          class="w-full h-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-[1.02]">
+
+        <div class="absolute inset-0 pointer-events-none border-[12px] border-white rounded-3xl"></div>
+      </div>
+    </div>
+
+    <div class="mt-12 flex justify-center gap-8 text-[#08004B]/60 font-bold" data-aos="fade-up">
+      <div class="flex items-center gap-2">
+        <span class="text-[#2546E0] text-2xl">+50</span>
+        <span>مشروع ناجح</span>
+      </div>
+      <div class="w-px h-6 bg-gray-200"></div>
+      <div class="flex items-center gap-2">
+        <span class="text-[#2546E0] text-2xl">+20</span>
+        <span>شريك استراتيجي</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 relative overflow-hidden">
+  <div class="container mx-auto px-6 max-w-4xl">
+    <div class="bg-gradient-to-br from-[#0b0064] to-[#08004B] p-12 rounded-[40px] border border-white/10 shadow-2xl shadow-[#2546E0]/20" data-aos="flip-up">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-bold mb-4">هل لديك مشروع؟</h2>
+        <p class="text-gray-400">أخبرنا عن فكرتك ودعنا نحولها إلى واقع.</p>
+      </div>
+      <form (ngSubmit)="onSubmit()" #f="ngForm" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <input [(ngModel)]="contact.name" name="name" type="text" placeholder="الاسم" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-[#2546E0] outline-none transition-all">
+          <input [(ngModel)]="contact.email" name="email" type="email" placeholder="البريد الإلكتروني" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-[#2546E0] outline-none transition-all">
+        </div>
+        <textarea [(ngModel)]="contact.message" name="message" placeholder="اشرح لنا فكرتك باختصار" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-40 focus:border-[#2546E0] outline-none transition-all"></textarea>
+        <button class="w-full bg-[#2546E0] py-5 rounded-2xl font-bold text-xl hover:scale-[1.02] active:scale-[0.98] transition-all">إرسال الطلب الآن</button>
+      </form>
+    </div>
+  </div>
+</section>

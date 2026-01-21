@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+@import 'aos/dist/aos.css';
+
+:root {
+  --primary: #2546E0;
+  --dark-bg: #08004B;
+  --accent: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--dark-bg);
+  color: white;
+  direction: rtl; /* لضبط الاتجاه العربي */
+  overflow-x: hidden;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Gradient Text Effect */
+.text-gradient {
+  background: linear-gradient(to left, #2546E0, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

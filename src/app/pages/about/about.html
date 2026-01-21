@@ -1,0 +1,97 @@
+<section class="relative bg-[#08004B] text-white pt-32 pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-[url('assets/images/abstract-bg.png')] bg-cover bg-center opacity-10"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-left">
+        <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+          كود لينك: <span class="text-gradient">قيادة الحلول</span> المبتكرة
+        </h1>
+        <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+          نحن شركة سعودية متخصصة في تقديم حلول متكاملة في مجالات البرمجة، التسويق الرقمي، والاستشارات التقنية. نركز على تمكين الشركات والأفراد من التحول الرقمي وتحقيق النمو.
+        </p>
+        <button class="bg-[#2546E0] text-white px-8 py-3 rounded-full font-bold hover:shadow-[0_0_20px_#2546E0] transition-all">
+          تواصل معنا
+        </button>
+      </div>
+      <div class="flex justify-center" data-aos="fade-right" data-aos-delay="200">
+        <img src="assets/images/solutions.png" alt="CodeLink Solutions" class="max-w-full h-auto rounded-xl shadow-2xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-[#050035]">
+  <div class="container mx-auto px-6 text-center">
+    <div data-aos="fade-down" class="mb-16">
+      <h2 class="text-4xl font-black mb-4">ثقافتنا في العمل</h2>
+      <div class="w-24 h-1.5 bg-[#2546E0] mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      @for (value of cultureValues; track value.title) {
+        <div class="bg-[#0b0064] p-10 rounded-3xl border border-white/5 shadow-lg group" data-aos="fade-up" [attr.data-aos-delay]="value.title === 'الشفافية' ? 200 : 0">
+          <h3 class="text-3xl font-bold mb-5 text-[#2546E0] group-hover:text-white transition-colors">{{ value.title }}</h3>
+          <p class="text-gray-400 leading-relaxed mb-6">{{ value.description }}</p>
+          <div class="grid grid-cols-2 gap-4 text-left text-sm text-gray-300">
+            @for (point of value.points; track point) {
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check-circle text-[#2546E0]"></i>
+                <span>{{ point }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-white text-[#08004B]">
+  <div class="container mx-auto px-6 text-center">
+    <div data-aos="fade-down" class="mb-16">
+      <h2 class="text-4xl font-black mb-4">إنجازاتنا بالأرقام</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">نتائجنا تتحدث عنا. هذا ما حققناه لعملائنا وشركائنا.</p>
+      <div class="w-24 h-1.5 bg-[#2546E0] mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+      @for (achievement of achievements; track achievement.text) {
+        <div class="bg-gray-100 p-8 rounded-2xl flex flex-col items-center justify-center border border-gray-200 shadow-md transform hover:scale-105 transition-all duration-300" data-aos="zoom-in" [attr.data-aos-delay]="$index * 100">
+          <p class="text-5xl font-extrabold text-[#2546E0] mb-3">{{ achievement.count }}</p>
+          <span class="text-lg font-semibold text-[#08004B]">{{ achievement.text }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-[#08004B] text-white">
+  <div class="container mx-auto px-6 text-center">
+    <div data-aos="fade-up">
+      <h2 class="text-4xl font-black mb-4">حياتك المهنية في كود لينك</h2>
+      <p class="text-gray-300 max-w-3xl mx-auto mb-10">
+        تتطلع لبدء حياتك المهنية في كود لينك؟ بغض النظر عن عمرك وجنسك ومهنتك الحالية، فإننا نمنحك فرصة للانضمام إلى فريق كود لينك وبناء مستقبل مهني ناجح!
+      </p>
+      <a routerLink="/careers" class="bg-white text-[#08004B] px-10 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all">
+        اكتشف الوظائف المتاحة
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-white text-[#08004B] border-t border-gray-100">
+  <div class="container mx-auto px-6 text-center">
+    <div data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-4xl font-black mb-6 text-[#2546E0]">أكاديمية كود لينك</h2>
+
+      <p class="text-gray-600 max-w-3xl mx-auto mb-10 text-lg leading-relaxed">
+        انضم لترقية معرفتك ومهاراتك في أكثر لغات البرمجة شيوعًا وممارسات البرامج وتطوير التطبيقات وغير ذلك الكثير. ستوضح لك دوراتنا الطريق من الأساسيات إلى إتقان التقنيات المتطورة.
+      </p>
+
+      <a routerLink="/academy"
+         class="inline-block bg-[#2546E0] text-white px-12 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-[#08004B] hover:shadow-[#2546E0]/40 transition-all duration-300 transform hover:-translate-y-1">
+        اعرف المزيد عن الأكاديمية
+      </a>
+    </div>
+  </div>
+</section>

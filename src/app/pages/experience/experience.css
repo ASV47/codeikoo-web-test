@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    direction: rtl;
+}
+
+/* بطاقات الخبرة التقنية */
+.group:hover h3 {
+    transform: translateX(-5px);
+      cursor: pointer;
+
+}
+
+/* تخصيص السكرول في القسم الأسود */
+.flex-wrap span {
+    backdrop-filter: blur(5px);
+}
+
+/* تأثير الخط الجانبي في العناوين */
+h2 {
+    position: relative;
+}
+
+/* استجابة الموبايل */
+@media (max-width: 768px) {
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+}

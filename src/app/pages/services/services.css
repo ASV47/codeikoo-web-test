@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  direction: rtl;
+}
+
+/* تأثير التدرج اللوني */
+.text-gradient {
+  background: linear-gradient(90deg, #2546E0, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* تحسين شكل الأيقونات */
+i {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+
+}
+
+/* الحركة العائمة لخطوات العمل */
+.lg\:grid-cols-6 > div:nth-child(even) {
+    margin-top: 20px;
+}
+
+/* استجابة الموبايل لخطوات العمل */
+@media (max-width: 1024px) {
+    .lg\:grid-cols-6 > div:nth-child(even) {
+        margin-top: 0;
+    }
+}
+
+/* تأثيرات الـ Glassmorphism */
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* تحسين شكل الكروت في الموبايل */
+@media (max-width: 1024px) {
+    .lg\:w-5\/12 {
+        text-align: right !important;
+    }
+}
+
+/* حركة الأيقونة عند الـ Hover */
+.group:hover i {
+    transform: scale(1.2);
+}
+
+/* تخصيص المسافات للحصول على شكل متعرج (Zig-Zag) */
+@media (min-width: 1024px) {
+    .grid > div:nth-child(even) {
+        margin-top: 100px;
+    }
+}

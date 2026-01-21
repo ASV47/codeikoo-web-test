@@ -1,0 +1,91 @@
+<section class="relative bg-[#08004B] text-white pt-32 pb-20 overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div data-aos="fade-down">
+      <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+        خدمات تطوير البرمجيات لدعم <br> <span class="text-[#2546E0]">رؤى الأعمال الجريئة</span>
+      </h1>
+      <p class="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+        ركز على الصورة الكبيرة ودعنا نعتني بالتفاصيل . من إستراتيجية العمل القائمة على أبحاث السوق العميقة ودراسة المنافسين  إلى التكنولوجيا الأكثر تقدماً لتطوير فكرتك.
+      </p>
+    </div>
+  </div>
+  <div class="absolute top-0 right-0 w-96 h-96 bg-[#2546E0] rounded-full blur-[150px] opacity-10"></div>
+</section>
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (service of services; track service.title) {
+        <div class="group p-10 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-[#08004B] transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-2xl hover:shadow-[#2546E0]/20" data-aos="fade-up">
+          <div class="w-16 h-16 bg-[#2546E0]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#2546E0] transition-colors">
+            <i [class]="service.icon + ' text-2xl text-[#2546E0] group-hover:text-white'"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-[#08004B] group-hover:text-white transition-colors">{{ service.title }}</h3>
+          <p class="text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors">{{ service.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-[#050035] relative overflow-hidden">
+  <div class="absolute top-1/2 left-0 w-96 h-96 bg-[#2546E0] rounded-full blur-[150px] opacity-10"></div>
+
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-20" data-aos="fade-down">
+      <h2 class="text-4xl md:text-5xl font-black text-white">من البداية إلى النهاية</h2>
+      <p class="text-[#2546E0] font-bold mt-4 tracking-widest uppercase">كيف نصنع تحفتك الرقمية</p>
+    </div>
+
+    <div class="relative">
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#2546E0] via-[#2546E0]/20 to-transparent transform -translate-x-1/2"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+        @for (step of steps; track step.id; let i = $index) {
+          <div class="relative flex items-center"
+               [ngClass]="{'lg:flex-row-reverse text-right': i % 2 === 0, 'lg:flex-row text-left': i % 2 !== 0}"
+               data-aos="fade-up" [attr.data-aos-delay]="i * 100">
+
+            <div class="w-full lg:w-5/12 bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2rem] hover:border-[#2546E0] transition-all duration-500 group relative shadow-xl">
+              <span class="absolute top-4 [left-4] lg:[right-4] text-5xl font-black text-[#2546E0]/20 group-hover:text-[#2546E0]/40 transition-colors">
+                {{ step.id }}
+              </span>
+              <div class="relative z-10">
+                <div class="w-12 h-12 bg-[#2546E0] rounded-xl flex items-center justify-center mb-4 rotate-3 group-hover:rotate-12 transition-transform">
+                    <i [class]="'fa-solid ' + step.icon + ' text-white text-xl'"></i>
+                </div>
+                <h4 class="text-2xl font-black text-white mb-2">{{ step.title }}</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">نحن نضمن تنفيذ هذه المرحلة بأحدث المعايير التقنية لضمان استقرار مشروعك.</p>
+              </div>
+            </div>
+
+            <div class="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-[#050035] border-4 border-[#2546E0] rounded-full z-20 items-center justify-center shadow-[0_0_20px_#2546E0]">
+                <div class="w-2 h-2 bg-white rounded-full animate-ping"></div>
+            </div>
+
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-[#08004B] mb-16">ماذا يقول عملائنا</h2>
+    <div class="flex flex-wrap justify-center gap-8">
+      @for (item of testimonials; track $index) {
+        <div class="max-w-md p-8 rounded-3xl bg-gray-50 border border-gray-100 shadow-sm" data-aos="fade-right">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-[#2546E0]"></div>
+            <div>
+              <h5 class="font-bold text-[#08004B]">{{ item.name }}</h5>
+              <p class="text-xs text-gray-400 uppercase tracking-tighter">{{ item.job }}</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic leading-relaxed">"{{ item.comment }}"</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

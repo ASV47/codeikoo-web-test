@@ -1,0 +1,42 @@
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* تحسين استجابة الفورم */
+input:focus, textarea:focus {
+    box-shadow: 0 0 20px rgba(37, 70, 224, 0.2);
+}
+
+button {
+    cursor: pointer;
+}
+
+/* تنعيم حركة ظهور الألوان في الصورة */
+.group img {
+    filter: grayscale(100%) brightness(1.1);
+    will-change: filter, transform;
+      cursor: pointer;
+
+}
+
+.group:hover img {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* حركة عائمة خفيفة للسكشن */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.group {
+    animation: float 6s ease-in-out infinite;
+}

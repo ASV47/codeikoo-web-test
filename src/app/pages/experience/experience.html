@@ -1,0 +1,94 @@
+<section class="relative bg-[#08004B] text-white pt-32 pb-20 overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div data-aos="zoom-in">
+      <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">خبرتنا <span class="text-[#2546E0]">الهندسية</span></h1>
+      <p class="text-gray-300 max-w-4xl mx-auto text-lg leading-relaxed">
+        خبراتنا الأساسية هي المطابقة الدقيقة للتكنولوجيا مع احتياجات عملك. لقد صممنا مجموعة من الخدمات لتكون مرنة وسريعة الاستجابة، مع التركيز الكامل على تقديم نتائج سريعة ومؤثرة لمبادراتك الرقمية.
+      </p>
+    </div>
+  </div>
+  <div class="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+</section>
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="mb-16 border-r-8 border-[#2546E0] pr-6" data-aos="fade-right">
+      <h2 class="text-3xl font-black text-[#08004B]">الرقمنة والتنمية والتطبيق</h2>
+      <p class="text-gray-500 mt-2 font-medium uppercase tracking-widest">End-to-End Software Services</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (item of techExpertise; track item.title) {
+        <div class="group p-8 bg-gray-50 rounded-2xl border-b-4 border-transparent hover:border-[#2546E0] hover:bg-white hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+          <i [class]="'fa-solid ' + item.icon + ' text-4xl text-[#2546E0] mb-6 group-hover:scale-110 transition-transform'"></i>
+          <h3 class="text-xl font-bold text-[#08004B] mb-4">{{ item.title }}</h3>
+          <div class="w-12 h-1 bg-gray-200 group-hover:w-full transition-all duration-500"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-[#050035] text-white">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-left">
+        <h2 class="text-4xl font-black mb-8 leading-tight">خدمات البرمجيات <br> <span class="text-[#2546E0]">المتخصصة</span></h2>
+        <div class="flex flex-wrap gap-3">
+          @for (tag of specializedSoftware; track tag) {
+            <span class="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-sm hover:bg-[#2546E0] transition-colors cursor-default">
+              {{ tag }}
+            </span>
+          }
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4" data-aos="fade-right">
+        <div class="p-6 bg-[#2546E0]/10 rounded-3xl border border-[#2546E0]/20 text-center">
+            <p class="text-3xl font-black text-[#2546E0] mb-2">AI / ML</p>
+            <span class="text-xs uppercase text-gray-400">Advanced Intelligence</span>
+        </div>
+        <div class="p-6 bg-white/5 rounded-3xl border border-white/10 text-center mt-8">
+            <p class="text-3xl font-black text-white mb-2">IoT</p>
+            <span class="text-xs uppercase text-gray-400">Smart Connect</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-gray-50 overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row gap-12">
+
+      <div class="flex-1 bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-200/50" data-aos="fade-up">
+        <div class="w-14 h-14 bg-[#2546E0] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#2546E0]/40">
+            <i class="fa-solid fa-bullhorn text-white text-xl"></i>
+        </div>
+        <h3 class="text-2xl font-black text-[#08004B] mb-8">تسويق وسائل التواصل</h3>
+        <ul class="space-y-4">
+          @for (m of marketingServices; track m) {
+            <li class="flex items-center gap-3 text-gray-600 font-medium">
+              <span class="w-2 h-2 bg-[#2546E0] rounded-full"></span> {{ m }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="flex-1 bg-[#08004B] p-10 rounded-[2.5rem] text-white" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-black mb-8 border-b border-white/10 pb-4">استراتيجية وتفعيل <span class="text-[#2546E0]">العلامة التجارية</span></h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-300">
+          <div>
+            <h4 class="font-bold text-white mb-3">الإنشاء (CI/VI)</h4>
+            <p>UI/UX design, Motion design, Packaging, Product prototyping.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-3">التفعيل</h4>
+            <p>Artistic Curation, Brand Guardianship, Change management.</p>
+          </div>
+        </div>
+        <button class="mt-10 w-full py-4 border-2 border-[#2546E0] text-[#2546E0] font-bold rounded-xl hover:bg-[#2546E0] hover:text-white transition-all">تحميل بروفايل الشركة</button>
+      </div>
+
+    </div>
+  </div>
+</section>

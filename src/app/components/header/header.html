@@ -1,0 +1,30 @@
+<header class="main-header" [ngClass]="{'scrolled': isScrolled}">
+  <div class="header-container">
+     <a routerLink="/" class="logo">
+      <img src="assets/images/main.png" alt="Codeikoo Logo">
+    </a>
+
+
+    <nav class="nav-menu" [ngClass]="{'mobile-open': isMobileMenuOpen}">
+      <a routerLink="/home" (click)="scrollToTop()" routerLinkActive="active" class="nav-link">الرئيسية</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="scrollToTop()" class="nav-link">شركتنا</a>
+      <a routerLink="/services" routerLinkActive="active" (click)="scrollToTop()" class="nav-link">خدماتنا</a>
+      <a routerLink="/experience" routerLinkActive="active" (click)="scrollToTop()" class="nav-link">خبرتنا</a>
+      <a routerLink="/academy" routerLinkActive="active" (click)="scrollToTop()" class="nav-link academy-link">الأكاديمية</a>
+
+      <!-- <a routerLink="/hire-us" class="mobile-hire-btn" (click)="toggleMenu()">وظفنا الآن</a> -->
+    </nav>
+
+
+<div class="header-action">
+      <a routerLink="/hire-us" (click)="scrollToTop()" class="btn-hire">وظفنا</a>
+    </div>
+
+    <button class="mobile-toggle" (click)="toggleMenu()">
+      <i class="fa-solid" [ngClass]="isMobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'"></i>
+    </button>
+
+  </div>
+</header>
+
+<div class="menu-overlay" *ngIf="isMobileMenuOpen" (click)="toggleMenu()"></div>

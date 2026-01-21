@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  direction: rtl;
+}
+
+.text-gradient {
+  background: linear-gradient(to left, #2546E0, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* انميشن لبطاقات الكورسات */
+.group {
+    will-change: transform;
+      cursor: pointer;
+
+}
+
+.group:hover {
+    transform: translateY(-15px);
+}
+
+/* تخصيص أيقونات FontAwesome */
+i {
+    transition: transform 0.4s ease;
+}
+
+.group:hover i {
+    transform: rotateY(360deg) scale(1.1);
+}
+
+/* تأثير الخط الواصل أسفل العنوان */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #2546E0;
+    margin: 15px auto 0;
+    border-radius: 10px;
+}

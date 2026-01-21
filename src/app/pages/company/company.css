@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  direction: rtl; /* لضمان الاتجاه الصحيح للمحتوى العربي */
+}
+
+/* التدرج اللوني للنص */
+.text-gradient {
+  background: linear-gradient(to left, #2546E0, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* أيقونات Checkmark في قسم الثقافة */
+.fa-check-circle {
+    font-size: 1.2rem;
+}
+
+/* صور الهيرو */
+img.h-auto {
+    max-width: 100%;
+    height: auto;
+}
+
+/* تأثير بسيط على بطاقات الثقافة */
+.group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 70, 224, 0.2);
+}

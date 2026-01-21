@@ -1,0 +1,171 @@
+/* الإعدادات العامة للهيدر */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    transition: all 0.4s ease-in-out;
+    direction: rtl; /* لضمان الترتيب العربي */
+}
+
+/* شكل الهيدر عند التمرير (Scrolled) */
+.main-header.scrolled {
+    background-color: rgba(8, 0, 75, 0.95);
+    padding: 15px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* اللوجو */
+.logo {
+  display: flex;
+  align-items: center;
+    cursor: pointer;
+
+}
+
+.logo img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+    cursor: pointer;
+
+}
+
+/* قائمة الروابط */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+      cursor: pointer;
+
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #2546E0;
+}
+
+/* تأثير الخط السفلي تحت اللينكات */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2546E0;
+    transition: width 0.3s ease;
+      cursor: pointer;
+
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* زر وظفنا */
+.btn-hire {
+    background-color: #2546E0;
+    color: #ffffff;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid #2546E0;
+    transition: all 0.3s;
+      cursor: pointer;
+
+}
+
+.btn-hire:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* زر الموبايل (مخفي في الشاشات الكبيرة) */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+      cursor: pointer;
+
+}
+
+/* --- استجابة الموبايل (Responsive) --- */
+
+@media (max-width: 992px) {
+    .mobile-toggle {
+        display: block;
+    }
+
+    .header-action {
+        display: none; /* إخفاء زر اليسار في الموبايل */
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #08004B;
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+        transform: translateY(-150%);
+        transition: transform 0.4s ease-in-out;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+          cursor: pointer;
+
+    }
+
+    .nav-menu.mobile-open {
+        transform: translateY(0);
+    }
+
+    .mobile-hire-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #2546E0;
+        color: white;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+          cursor: pointer;
+
+    }
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
