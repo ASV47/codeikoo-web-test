@@ -47,17 +47,17 @@ jobs:
           export TOKEN
 
           python - <<'PY'
-import base64, json, os
-token = os.environ["TOKEN"]
-payload = token.split(".")[1]
-payload += "=" * (-len(payload) % 4)
-data = json.loads(base64.urlsafe_b64decode(payload.encode()).decode())
-print("aud:", data.get("aud"))
-print("sub:", data.get("sub"))
-print("repository:", data.get("repository"))
-print("ref:", data.get("ref"))
-print("job_workflow_ref:", data.get("job_workflow_ref"))
-PY
+          import base64, json, os
+          token = os.environ["TOKEN"]
+          payload = token.split(".")[1]
+          payload += "=" * (-len(payload) % 4)
+          data = json.loads(base64.urlsafe_b64decode(payload.encode()).decode())
+          print("aud:", data.get("aud"))
+          print("sub:", data.get("sub"))
+          print("repository:", data.get("repository"))
+          print("ref:", data.get("ref"))
+          print("job_workflow_ref:", data.get("job_workflow_ref"))
+          PY
 
       - name: Install
         run: npm ci
