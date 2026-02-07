@@ -83,11 +83,13 @@ jobs:
           set -e
           KEY="releases/${VERSION}.zip"
           aws s3 cp app.zip "s3://${DEPLOY_BUCKET}/${KEY}"
+          
 
           aws elasticbeanstalk create-application-version \
             --application-name "${EB_APP_NAME}" \
             --version-label "${VERSION}" \
             --source-bundle S3Bucket="${DEPLOY_BUCKET}",S3Key="${KEY}"
+
 
           aws elasticbeanstalk update-environment \
             --environment-name "${EB_ENV_NAME}" \
