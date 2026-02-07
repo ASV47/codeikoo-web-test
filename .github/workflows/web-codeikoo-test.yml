@@ -80,20 +80,27 @@ jobs:
    
       - name: Upload + Deploy
         env:
-          DEPLOY_BUCKET: ${{ secrets.DEPLOY_BUCKET }}
           EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
           EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
-          VERSION: ${{ github.sha }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
           set -e
-          KEY="releases/${VERSION}.zip"
-          aws s3 cp app.zip "s3://${DEPLOY_BUCKET}/${KEY}"
-          
+
+          EB_BUCKET="elasticbeanstalk-${AWS_REGION}-866395943548"
+          KEY="releases/${GITHUB_SHA}.zip"
+
+          # Ensure EB bucket exists (first time only)
+          aws s3 ls "s3://${EB_BUCKET}" >/dev/null 2>&1 || aws s3 mb "s3://${EB_BUCKET}" --region "${AWS_REGION}"
+
+          # Upload with SSE-S3 to avoid KMS issues
+          aws s3 cp app.zip "s3://${EB_BUCKET}/${KEY}" --sse AES256
+
           aws elasticbeanstalk create-application-version \
             --application-name "${EB_APP_NAME}" \
-            --version-label "${VERSION}" \
-            --source-bundle S3Bucket="${DEPLOY_BUCKET}",S3Key="${KEY}"
+            --version-label "${GITHUB_SHA}" \
+            --source-bundle S3Bucket="${EB_BUCKET}",S3Key="${KEY}"
 
           aws elasticbeanstalk update-environment \
             --environment-name "${EB_ENV_NAME}" \
-            --version-label "${VERSION}"
+            --version-label "${GITHUB_SHA}"
+
