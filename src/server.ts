@@ -52,13 +52,12 @@ app.use((req, res, next) => {
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
-  const port = process.env['PORT'] || 4000;
-  app.listen(port, (error) => {
-    if (error) {
-      throw error;
-    }
+  const rawPort = process.env['PORT'];
+  const port = Number.isFinite(Number(rawPort)) ? Number(rawPort) : 4000;
 
-    console.log(`Node Express server listening on http://localhost:${port}`);
+  app.listen(port, '0.0.0.0', (error) => {
+    if (error) throw error;
+    console.log(`Node Express server listening on http://0.0.0.0:${port}`);
   });
 }
 
