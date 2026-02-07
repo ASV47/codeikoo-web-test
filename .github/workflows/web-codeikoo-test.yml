@@ -27,6 +27,12 @@ jobs:
           node-version: "20"
           cache: npm
 
+      # ✅ يطبع الـ OIDC claims (مفيد جدًا لمعرفة لماذا AWS ترفض AssumeRole)
+      - name: Debug OIDC claims
+        uses: github/actions-oidc-debugger@v1
+        with:
+          audience: sts.amazonaws.com
+
       - name: Install
         run: npm ci
 
@@ -41,6 +47,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
+          audience: sts.amazonaws.com
 
       - name: Upload + Deploy
         env:
