@@ -73,7 +73,6 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
-
       - name: Upload + Deploy
         env:
           DEPLOY_BUCKET: ${{ secrets.DEPLOY_BUCKET }}
