@@ -1,4 +1,4 @@
-name: Deploy to Elastic Beanstalk (SSR)     
+name: Deploy to Elastic Beanstalk (SSR)       
 
 'on':
   push:
