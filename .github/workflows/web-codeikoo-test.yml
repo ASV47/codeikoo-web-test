@@ -1,0 +1,63 @@
+name: Deploy to Elastic Beanstalk (SSR)
+
+'on':
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: eb-prod
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Package artifact
+        run: zip -r app.zip dist package.json package-lock.json
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload + Deploy
+        env:
+          DEPLOY_BUCKET: ${{ secrets.DEPLOY_BUCKET }}
+          EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
+          EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
+          VERSION: ${{ github.sha }}
+        run: |
+          set -e
+          KEY="releases/${VERSION}.zip"
+          aws s3 cp app.zip "s3://${DEPLOY_BUCKET}/${KEY}"
+
+          aws elasticbeanstalk create-application-version \
+            --application-name "${EB_APP_NAME}" \
+            --version-label "${VERSION}" \
+            --source-bundle S3Bucket="${DEPLOY_BUCKET}",S3Key="${KEY}"
+
+          aws elasticbeanstalk update-environment \
+            --environment-name "${EB_ENV_NAME}" \
+            --version-label "${VERSION}"
