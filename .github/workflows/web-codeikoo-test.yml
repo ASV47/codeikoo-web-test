@@ -58,7 +58,6 @@ jobs:
           print("ref:", data.get("ref"))
           print("job_workflow_ref:", data.get("job_workflow_ref"))
           PY
-
       - name: Install
         run: npm ci
 
