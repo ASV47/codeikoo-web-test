@@ -78,29 +78,41 @@ jobs:
            aws sts get-caller-identity
            aws s3 ls "s3://${{ secrets.DEPLOY_BUCKET }}" || true
    
+      - name: Verify EB app/env exist
+        env:
+          AWS_REGION: eu-central-1
+          EB_APP_NAME: codelink-web
+          EB_ENV_NAME: codelink-prod
+        run: |
+          set -e
+          aws sts get-caller-identity
+          aws elasticbeanstalk describe-applications --region "${AWS_REGION}" \
+            --query "Applications[].ApplicationName" --output table
+          aws elasticbeanstalk describe-environments --region "${AWS_REGION}" \
+            --application-name "${EB_APP_NAME}" \
+            --query "Environments[].EnvironmentName" --output table
+
       - name: Upload + Deploy
         env:
-          EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
-          EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_REGION: eu-central-1
+          EB_APP_NAME: codelink-web
+          EB_ENV_NAME: codelink-prod
         run: |
           set -e
 
           EB_BUCKET="elasticbeanstalk-${AWS_REGION}-866395943548"
           KEY="releases/${GITHUB_SHA}.zip"
 
-          # Ensure EB bucket exists (first time only)
           aws s3 ls "s3://${EB_BUCKET}" >/dev/null 2>&1 || aws s3 mb "s3://${EB_BUCKET}" --region "${AWS_REGION}"
-
-          # Upload with SSE-S3 to avoid KMS issues
-          aws s3 cp app.zip "s3://${EB_BUCKET}/${KEY}" --sse AES256
+          aws s3 cp app.zip "s3://${EB_BUCKET}/${KEY}" --sse AES256 --region "${AWS_REGION}"
 
           aws elasticbeanstalk create-application-version \
+            --region "${AWS_REGION}" \
             --application-name "${EB_APP_NAME}" \
             --version-label "${GITHUB_SHA}" \
             --source-bundle S3Bucket="${EB_BUCKET}",S3Key="${KEY}"
 
           aws elasticbeanstalk update-environment \
+            --region "${AWS_REGION}" \
             --environment-name "${EB_ENV_NAME}" \
             --version-label "${GITHUB_SHA}"
-
