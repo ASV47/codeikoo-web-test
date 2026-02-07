@@ -73,6 +73,11 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
+      - name: Debug identity + bucket
+        run: |
+           aws sts get-caller-identity
+           aws s3 ls "s3://${{ secrets.DEPLOY_BUCKET }}" || true
+   
       - name: Upload + Deploy
         env:
           DEPLOY_BUCKET: ${{ secrets.DEPLOY_BUCKET }}
