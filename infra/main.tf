@@ -230,10 +230,10 @@ data "aws_iam_policy_document" "gha_assume" {
     }
 
     condition {
-      test     = "StringLike"
-      variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repository}:ref:refs/heads/${var.github_branch}"]
-    }
+  test     = "StringLike"
+  variable = "token.actions.githubusercontent.com:sub"
+  values   = ["repo:${var.github_repository}:*"]
+}
   }
 }
 
