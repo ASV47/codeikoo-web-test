@@ -27,9 +27,15 @@ jobs:
           node-version: "20"
           cache: npm
 
-      # ✅ Debug بسيط بدون Docker: يطبع aud/sub/ref عشان نطابقهم مع Trust Policy في AWS
-      - name: Debug OIDC claims (aud/sub/ref)
+      - name: Install jq (for debug)
         run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
+
+      - name: Debug OIDC claims (aud/sub/ref)
+        shell: bash
+        run: |
+          set -e
           echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
           echo "GITHUB_REF=$GITHUB_REF"
           echo "GITHUB_SHA=$GITHUB_SHA"
@@ -38,6 +44,7 @@ jobs:
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com")
 
           TOKEN=$(echo "$RESP" | jq -r '.value')
+          export TOKEN
 
           python - <<'PY'
 import base64, json, os
@@ -51,8 +58,6 @@ print("repository:", data.get("repository"))
 print("ref:", data.get("ref"))
 print("job_workflow_ref:", data.get("job_workflow_ref"))
 PY
-        env:
-          TOKEN: ${{ env.TOKEN }}
 
       - name: Install
         run: npm ci
