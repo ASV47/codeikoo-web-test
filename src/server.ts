@@ -5,28 +5,24 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
-const browserDistFolder = join(import.meta.dirname, '../browser');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const browserDistFolder = join(__dirname, '../browser');
+
+const BACKEND = 'http://codeikoo-backend-dotnet-prod.eba-mqskcvmc.eu-central-1.elasticbeanstalk.com';
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+// ✅ Proxy للباك (بدون CORS)
+app.use('/api', createProxyMiddleware({ target: BACKEND, changeOrigin: true }));
+app.use('/swagger', createProxyMiddleware({ target: BACKEND, changeOrigin: true }));
+app.use('/health', createProxyMiddleware({ target: BACKEND, changeOrigin: true }));
+app.use('/hubs', createProxyMiddleware({ target: BACKEND, changeOrigin: true, ws: true }));
 
-/**
- * Serve static files from /browser
- */
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -35,33 +31,19 @@ app.use(
   }),
 );
 
-/**
- * Handle all other requests by rendering the Angular application.
- */
 app.use((req, res, next) => {
   angularApp
     .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
     .catch(next);
 });
 
-/**
- * Start the server if this module is the main entry point, or it is ran via PM2.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
- */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
-  const rawPort = process.env['PORT'];
-  const port = Number.isFinite(Number(rawPort)) ? Number(rawPort) : 4000;
-
+  const port = Number.parseInt(process.env['PORT'] ?? '4000', 10) || 4000;
   app.listen(port, '0.0.0.0', (error) => {
     if (error) throw error;
-    console.log(`Node Express server listening on http://0.0.0.0:${port}`);
+    console.log(`Server listening on http://0.0.0.0:${port}`);
   });
 }
 
-/**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
- */
 export const reqHandler = createNodeRequestHandler(app);
